@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="div">
+        <span id="one"> </span> <span id="sym"> </span> <span id="two"> </span>
+    </div>
+    <h1 id="output"> </h1>
+    <h1 id="lol"> </h1>
+    <button onclick="addNum(0)"> 0 </button>
+    <button onclick="addNum(1)"> 1 </button>
+    <button onclick="addNum(2)"> 2 </button>
+    <button onclick="addNum(3)"> 3 </button>
+    <button onclick="addNum(4)"> 4 </button>
+    <button onclick="addNum(5)"> 5 </button>
+    <button onclick="addNum(6)"> 6 </button>
+    <button onclick="addNum(7)"> 7 </button>
+    <button onclick="addNum(8)"> 8 </button>
+    <button onclick="addNum(9)"> 9 </button>
+    <button onclick="addSign('+')"> + </button>
+    <button onclick="addSign('-')"> - </button>
+    <button onclick="addSign('/')"> / </button>
+    <button onclick="addSign('*')"> * </button>
+    <button onclick="calculate()"> = </button>
+
+
+</body>
+
+</html>
+<script>
+
+
+
+
+    function addNum(params) {
+        if (div.textContent.includes('+') || div.textContent.includes('-') || div.textContent.includes('/') || div.textContent.includes('*')) {
+            two.innerHTML += params
+        } else {
+            one.innerHTML += params
+        }
+
+    }
+
+    function addSign(params) {
+        console.log(two.textContent.length);
+        two.textContent = two.textContent.trim()
+        if (two.textContent.length > 0) {
+            return calculate()
+        } else {
+            sym.innerHTML = params
+        }
+
+    }
+
+    function calculate() {
+
+        if (div.textContent.includes('+')) {
+            let nums = div.textContent.trim().split("+")
+            console.log(nums);
+            output.innerHTML = Number(nums[0]) + Number(nums[1])
+            display()
+        } else if (div.textContent.includes('-')) {
+            let nums = div.textContent.split("-")
+            console.log(nums);
+            output.innerHTML = Number(nums[0]) - Number(nums[1])
+            display()
+        } else if (div.textContent.includes('/')) {
+            let nums = div.textContent.split("/")
+            console.log(nums);
+            output.innerHTML = Number(nums[0]) / Number(nums[1])
+            display()
+        } else if (div.textContent.includes('*')) {
+            let nums = div.textContent.split("*")
+            console.log(nums);
+            output.innerHTML = Number(nums[0]) * Number(nums[1])
+            display()
+        }else{
+            let nums = div.textContent.trim().split("+")
+            console.log(nums);
+            output.innerHTML = Number(nums[0]) 
+            display()
+
+        }
+
+    }
+
+    function display() {
+        one.innerHTML = output.innerHTML
+        sym.innerHTML = ''
+        two.innerHTML = ''
+    }
+
+
+
+
+</script>
