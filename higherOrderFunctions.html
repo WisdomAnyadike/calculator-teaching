@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    
+</body>
+</html>
+<script>
+
+// some every find findindex foreach map filter reduce 
+
+let arr = ['2','3','5']
+
+let addition = '2' + '3' + '5'
+
+// let function1 = () => {
+ 
+//  }
+
+
+
+
+
+//   let checkIfAdditionEquals5 = arr.every( function (a) {
+//     return  typeof(a) === "number"// true or false
+//  } )
+
+//  if (checkIfAdditionEquals5) {
+//      console.log('all are numbers');
+//  } else{
+//     console.log('not all of them are numbers');
+//  }
+ 
+//  let findNumber = arr.findIndex( function (num) {
+//      return num === 88  // index or -1
+//  })
+
+//  if (findNumber === -1){
+//     console.log(`couldnt find the number , index: ${findNumber}`);
+//  }else{
+//     console.log(`its on index ${findNumber}`);
+//  }
+
+
+//  for (let index = 0; index < array.length; index++) {
+//     const element = array[index];
+    
+//  }
+
+
+
+  arr.forEach(  (nums , yyugh)  =>  {
+    return 'foreach:' + nums + ' ' + yyugh
+})
+
+
+
+
+ let resultsFromMap =  arr.map( (num , i)=> {
+    return `map :`  + num + ' ' + i
+   })
+
+
+   console.log(resultsFromMap);
+
+
+// let sum = 0
+// for (let index = 0; index < array.length; index++) {
+//      sum += arr[index]
+    
+// }
+
+
+
+let evenNumberArr =  arr.filter ( (num)=> {
+    return num % 2 == 0
+ })
+
+console.log(evenNumberArr);
+
+
+
+
+let sum = arr.reduce((a,b)=> {
+  return a + b  
+})
+ 
+
+console.log(sum);
+
+
+</script>

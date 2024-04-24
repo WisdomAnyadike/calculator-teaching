@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="input" oninput="search()"> <button onclick="clearScreen()"> clear</button>
+    <div id="output"> </div>
+
+    <!-- <button onclick="doSmth()"> click me </button> -->
+    
+</body>
+</html>
+<script>
+
+    let arr = ['dave' , 'dan' , 'mike', 'tolu' , 'efe']
+
+    
+
+
+    function search() {
+    let inputval = input.value.toLowerCase().replaceAll(' ', '')
+
+    let filteredArr =  arr.filter((name)=> { return name.includes(inputval)}  )
+   
+
+   if (filteredArr.length == 0) {
+     output.innerHTML = 'product does not exist'
+   }else {
+     
+    output.innerHTML = ''
+     filteredArr.forEach((name)=> {  
+         output.innerHTML += `<button onclick='goSomewhere(event)'>  ${name}  </button>`
+     })
+
+
+   }
+
+
+        
+    }
+
+
+    function displayOriginalArr() {
+     arr.forEach((name , index)=> {  
+         output.innerHTML += `<button value=${index} onclick='goSomewhere(event)'>  ${name}  </button>`
+     })
+    }
+
+
+
+    displayOriginalArr()
+
+
+   function goSomewhere(e) {
+  if ( e.target.value == 0){
+    window.location.href = 'http://instagram.com'
+  }else if(e.target.value == 1){
+    window.location.href = 'http://facebook.com'
+  }
+   }
+
+
+// function clearScreen() {
+//     output.innerHTML = ''
+// }
+
+
+
+// if ((true && false)  || true){
+//     console.log('45 is truthy');
+// }else{
+//     console.log('45 is falsy');
+// }
+
+// let count = 0 
+//  count--
+
+// console.log(count)
+
+
+//  let year = new Date().getFullYear()
+//  let month = new Date().getMonth() + 1
+//  let day = new Date().getDay()
+
+//  let dateFormat = `${year} ${month} ${day}`
+//  console.log(dateFormat);
+ 
+
+
+// let isRaining = false
+// isRaining
+//   ? console.log('You need a rain coat.')
+//   : console.log('No need for a rain coat.')
+
+// // let object = {
+// //     name:'dave' ,
+// //     alert () {
+// //         console.log('whats up');
+// //     }
+// // }
+
+// function doSmth() {
+//   let confimation =  window.confirm('are you certain?') 
+//   if (confimation) {
+//    window.alert('confirmed')
+//   }else{
+//     window.alert('not confirmed')
+//   }
+// }
+
+
+</script>

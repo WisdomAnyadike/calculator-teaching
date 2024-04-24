@@ -1,0 +1,29 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+
+        <input id="input1"> <input id="input2">
+        <button onclick="generate()" > generate </button>
+        <div id="output"> </div>
+        
+    </body>
+    </html>
+    <script>
+
+        function generate() {
+            for (let i = input1.value; i <= input2.value; i++) {
+                for (let index = 0; index <= 12; index++) {  
+                    output.innerHTML +=  `<p style="margin-bottom: 10px;"> ${i} x ${index} = ${i * index} </p>  `
+                }
+                
+            }
+            
+        }
+
+        
+    </script>

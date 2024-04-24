@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    let arr = ['20', '30', '40', '50', '60', '70']
+
+    //( some , every , find , findindex , map , reduce , foreach , filter)
+
+    console.log(arr.some( function (arrMember) {
+         return arrMember.includes('3')
+    }));
+
+
+  let allIncludes3 =  arr.every( function (arrMember) {
+         return arrMember.includes('3')
+    })
+
+
+    console.log(allIncludes3);
+
+
+    let namesArr = ['dan' , 'mike' , 'tolu' , 'shola' , 'mike']
+
+  let findName =  namesArr.findIndex(function (name) {
+      return  name == 'mike'
+    })
+
+    console.log(findName);
+
+     namesArr.forEach(function (name , i) {
+        console.log(`member:${name}  index:${i}`) 
+    })
+
+    namesArr.map(function (name , i) {
+        console.log(`member:${name}  index:${i}`) 
+    })
+
+
+  let arrMembers2 =  namesArr.map(function (name , i) {
+        return ` member:${name}  index:${i}`
+    })
+  
+    console.log(arrMembers2);
+
+    let nums = [2,4,5,5,6,7,7]
+
+ let addition =   nums.reduce((a,b)=>  a / b  )
+
+
+    console.log(addition)
+
+
+
+
+// if (findName != undefined) {
+//     console.log('hello from mike');
+// }else{
+//     console.log('mike is not around');
+// }
+
+
+    console.log(findName);
+
+
+
+
+
+
+
+   let oldFunc =  (a) => {
+        console.log(a);
+    }
+
+    oldFunc('300')
+
+
+
+   let newFunc = function () {
+        
+    }
+
+</script>
