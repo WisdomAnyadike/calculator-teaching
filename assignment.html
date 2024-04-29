@@ -8,32 +8,200 @@
 <body>
     <label for="airtime"> airtime</label>
     <select id="airtime">
-        <option value=""> mtn </option>
-        <option value=""> airtel </option>
-        <option value=""> glo </option>
-        <option value=""> 9mobile </option>
+        <option value=""> choose network </option>
+        <option value="mtn"> mtn </option>
+        <option value="airtel"> airtel </option>
+        <option value="glo"> glo </option>
+        <option value="9mobile"> 9mobile </option>
 
     </select>
 
     <label for="amount"> amount</label>
     <select id="amount">
-        <option value=""> 100 </option>
-        <option value=""> 200 </option>
-        <option value="">500 </option>
-        <option value=""> 1000 </option>
+        <option value=""> choose amount </option>
+        <option value="100"> 100 </option>
+        <option value="200"> 200 </option>
+        <option value="500">500 </option>
+        <option value="1000"> 1000 </option>
 
     </select>
 
  <div>
     <button onclick="generate()"> generate pin</button>
-    <h1 id="pin"> </h1>
+    <h1 id="thePin"> </h1>
  </div>
    
 
-    <input type="text" >
+    <input type="text" id="recharger" >
     <button onclick="loadAirtime()"> load </button>
 
-    <h1> Balance: </h1>
+    <h1> Balance: <span id="balance"> </span> </h1>
+
+
+    <table>
+   <thead>
+    <th>
+        s/n
+    </th>
+    <th>
+        provider
+    </th>
+    <th>
+        amount
+    </th>
+    <th>
+        used
+    </th>
+    <th>
+        date created
+    </th>
+    <th>
+        pin
+    </th>
+   </thead>
+   <tbody id="tbody">
+  
+
+
+
+   </tbody>
+
+    </table>
     
 </body>
 </html>
+<script>
+    
+    let pins = []
+    let bal = 0
+
+
+ function generate() {
+    
+
+    let pin = ''
+   
+
+for (let index = 0; index < 15 ; index++) {
+    let randomNum = Math.floor(Math.random() * 10)
+    pin +=  randomNum 
+}
+
+
+
+if (airtime.value === ''|| amount.value === '') {
+    alert('all fields are mandatory')
+} else{
+    let cardObject = {
+    provider: airtime.value ,
+    amount: amount.value ,
+    used: false ,
+    rechargePin :  pin, 
+    timeRecharged : new Date() 
+ }
+ 
+ thePin.innerHTML = pin
+ pins.push(cardObject)
+ displayTable()
+ console.log(pins);
+
+}
+
+
+        
+    }
+
+
+    function displayTable() {
+   tbody.innerHTML = ''
+ pins.map((obj, index)=> {
+            tbody.innerHTML +=   `<tr>
+        <td>${index + 1} </td>
+        <td>${obj.provider} </td>
+        <td>${obj.amount} </td>
+        <td>${obj.used} </td>
+        <td>${obj.timeRecharged} </td>
+        <td> ${obj.rechargePin}</td>
+    </tr>`
+
+        })
+    
+    }
+
+
+    displayTable()
+
+
+    
+
+function loadAirtime() {
+ console.log(pins);
+
+ console.log(recharger.value);
+ let cardRecharge = recharger.value
+ let pinUsed = cardRecharge.slice(5, 20)
+ console.log(pinUsed);
+
+ let cardToBeRecharged = pins.find((obj)=>  obj.rechargePin === pinUsed)
+
+console.log(cardToBeRecharged);
+
+if (cardToBeRecharged.used === true) {
+   alert('this card has been used')
+   
+    
+} else if( cardToBeRecharged){
+    alert(`you just recharged ${cardToBeRecharged.provider} ${cardToBeRecharged.amount}`)
+    addUpBalance(cardToBeRecharged.amount)
+    cardToBeRecharged.used = true
+    displayTable()
+}
+
+else{
+     alert('invalid pin')
+}
+
+
+ 
+
+    
+}
+
+function addUpBalance(value) {
+    console.log(value);
+    balance.innerHTML =  bal += Number(value)
+}
+
+
+
+// let arr = ['24' , '35' , '65']
+// let objarr = [ {name:'wade'}, {name:'tobi'} , {name:'david'}]
+
+// arr.find((num)=> num === '35')
+//  let foundObj = objarr.find((obj)=> obj.name === 'wade')
+
+//  console.log(foundObj);
+ 
+let davido = {
+    gang: '30bg'
+}
+
+
+localStorage.setItem('classMember' , JSON.stringify(davido) )
+
+console.log(JSON.parse(localStorage.getItem("classMember")));
+
+localStorage.removeItem('classMember')
+
+console.log(JSON.parse(localStorage.getItem("classMember")));
+
+localStorage.key(0)
+console.log(localStorage.key(0));
+
+
+
+
+
+
+
+</script>

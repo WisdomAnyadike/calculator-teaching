@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <button onclick="change()"> change</button> -->
+
+    
+</body>
+</html>
+<script>
+    document.body.style.backgroundColor = 'white'
+//     function change() {
+//         document.body.style.backgroundColor == 'white'   ? document.body.style.backgroundColor = 'black'  : document.body.style.backgroundColor = 'white'
+//     }
+
+
+// setInterval(() => {
+//    change() 
+// }, 2000);
+
+// function randomColor() {
+//     let first = Math.floor(Math.random() * 256)
+//     let second = Math.floor(Math.random() * 256)
+//     let third = Math.floor(Math.random() * 256)
+
+//     return `rgb(${first},${second},${third})`
+    
+// }
+
+// document.body.style.backgroundColor = randomColor()
+
+// console.log(randomColor());
+
+
+// console.log(pin);
+
+function createHexaColor() {
+    let hexa = '#'
+
+    let letters = ['a','b' ,'c' , '0' , '1' , '2', '3']
+
+    for (let index = 0; index < 6; index++) {
+        let randomNum = Math.floor(Math.random() * letters.length)
+
+         hexa +=  letters[randomNum]
+    }
+    
+    return hexa
+}
+
+
+console.log(createHexaColor()); // #54ddee
+
+
+
+</script>
