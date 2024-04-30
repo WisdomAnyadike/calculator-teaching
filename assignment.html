@@ -28,7 +28,7 @@
 
  <div>
     <button onclick="generate()"> generate pin</button>
-    <h1 id="thePin"> </h1>
+    <h1 id="thePin">  </h1>
  </div>
    
 
@@ -72,8 +72,12 @@
 </html>
 <script>
     
-    let pins = []
-    let bal = 0
+    let pins = JSON.parse(localStorage.getItem('rechargeCards')) || []
+    let bal =   Number(localStorage.getItem('rechargeBalance')) ||  0
+
+
+    balance.innerHTML = bal
+
 
 
  function generate() {
@@ -97,11 +101,12 @@ if (airtime.value === ''|| amount.value === '') {
     amount: amount.value ,
     used: false ,
     rechargePin :  pin, 
-    timeRecharged : new Date() 
+    timeCreated : new Date() 
  }
  
  thePin.innerHTML = pin
- pins.push(cardObject)
+ pins.push(cardObject) 
+ localStorage.setItem( 'rechargeCards' , JSON.stringify(pins))
  displayTable()
  console.log(pins);
 
@@ -120,7 +125,7 @@ if (airtime.value === ''|| amount.value === '') {
         <td>${obj.provider} </td>
         <td>${obj.amount} </td>
         <td>${obj.used} </td>
-        <td>${obj.timeRecharged} </td>
+        <td>${obj.timeCreated} </td>
         <td> ${obj.rechargePin}</td>
     </tr>`
 
@@ -154,6 +159,7 @@ if (cardToBeRecharged.used === true) {
     alert(`you just recharged ${cardToBeRecharged.provider} ${cardToBeRecharged.amount}`)
     addUpBalance(cardToBeRecharged.amount)
     cardToBeRecharged.used = true
+    localStorage.setItem('rechargeCards' , JSON.stringify(pins))
     displayTable()
 }
 
@@ -168,9 +174,12 @@ else{
 }
 
 function addUpBalance(value) {
-    console.log(value);
-    balance.innerHTML =  bal += Number(value)
+    bal += Number(value)
+    localStorage.setItem('rechargeBalance' , Number(bal))
+    balance.innerHTML = bal
 }
+
+
 
 
 
