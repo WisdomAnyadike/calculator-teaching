@@ -140,22 +140,22 @@ if (airtime.value === ''|| amount.value === '') {
     
 
 function loadAirtime() {
- console.log(pins);
-
- console.log(recharger.value);
  let cardRecharge = recharger.value
  let pinUsed = cardRecharge.slice(5, 20)
- console.log(pinUsed);
 
  let cardToBeRecharged = pins.find((obj)=>  obj.rechargePin === pinUsed)
 
 console.log(cardToBeRecharged);
 
-if (cardToBeRecharged.used === true) {
+if(!cardToBeRecharged){
+    alert('this card does not exist')
+}
+
+else if (cardToBeRecharged.used === true) {
    alert('this card has been used')
    
     
-} else if( cardToBeRecharged){
+} else if( cardRecharge.startsWith('*311*') && cardRecharge.endsWith('#') && cardToBeRecharged){
     alert(`you just recharged ${cardToBeRecharged.provider} ${cardToBeRecharged.amount}`)
     addUpBalance(cardToBeRecharged.amount)
     cardToBeRecharged.used = true

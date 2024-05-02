@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <div id="div1"> </div> 
+    <input type="file" id="myFile" onchange="loadFile()">
+
+    <!-- <button id="button"> click to say hi </button>
+    <input type="text" id="input" >  -->
+
+    
+</body>
+</html>
+<script>
+    let myFile = document.getElementById('myFile')
+    let div = document.getElementById('div1')
+
+    function loadFile() {
+     let file  = myFile.files[0]
+     let reader = new FileReader()
+
+     reader.addEventListener('load' , (e)=> {
+        let data = e.target.result
+        console.log(data);
+        div.innerHTML = `<img width="300px" height="300px" src="${data}">`
+     })
+
+     if (file) {
+        reader.readAsDataURL(file)
+     }
+
+        
+    }
+
+    // let button = document.getElementById('button')
+    // button.addEventListener('click' , function () {
+    //     alert('say hi')
+    // })
+
+    // let input = document.getElementById('input')
+    // input.addEventListener('keypress' , function () {
+    //     alert('say hi')
+    // })
+
+
+</script>
