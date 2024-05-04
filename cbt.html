@@ -8,6 +8,7 @@
 </head>
 
 <body>
+    <p id="countdown"> </p>
     <div id="cbt">
 
 
@@ -21,6 +22,7 @@
 
 </html>
 <script>
+      let countDown = 5
     let score = []
     let questions = [
         {
@@ -40,6 +42,8 @@
         }
     ]
 
+
+   
 
 
     let count = 0
@@ -72,9 +76,26 @@
 
     }
 
+    setTimeout(()=> {
+    showScore()
+
+    }, 5000)
+
+    countdown.innerHTML = countDown
+    
+    setInterval(()=> {
+        if(countDown > 1){
+        countDown-- 
+        countdown.innerHTML = countDown
+        }else{
+            countdown.innerHTML = 'time up' 
+        }
+        
+    }, 1000)
+
     function display(button = '' ) {
         cbt.innerHTML = `
-            <p>${count + 1} </p>
+            <p>${count + 1}    </p>
              <h1> ${questions[count].question} </h1>
         <input onclick="check(event, ${count})" value="${questions[count].options[0]}" id="option1" name="option" type="radio"> 
         <label for="option1" > ${questions[count].options[0]} </label> <br>
@@ -108,14 +129,20 @@
     function submit() {
         let confirm = window.confirm("are you sure?")
             if (confirm) {
-               cbt.innerHTML = `<p> your score is ${score.reduce((a,b)=> a+ b )} / ${questions.length} </p>`
+              showScore()
             }else{
                 display(`<button onclick="submit()"> submit </button>`)   
             }
     }
 
 
+   
+  
+    function showScore() {
+        cbt.innerHTML = `<p> your score is ${score.reduce((a,b)=> a+ b , 0)} / ${questions.length} </p>`
+    }
  
+  
     
 
 
